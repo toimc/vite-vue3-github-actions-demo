@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
-export default defineConfig(({mode} => {
+export default defineConfig(({mode}) => {
   const isProd = mode === 'production'
   return {
     base: isProd ? '/vite-vue3-github-actions-demo/' : './',
@@ -19,4 +19,4 @@ export default defineConfig(({mode} => {
       }
     }
   }
-}))
+})

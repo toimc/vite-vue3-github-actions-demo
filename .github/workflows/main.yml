@@ -3,6 +3,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
+
+permissions: 
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,5 +26,10 @@ jobs:
         run: pnpm build
       - name: display dist files
         run: ls -la && ls dist/
-    # - name: publish
-    #   run: echo Hello, world!
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
